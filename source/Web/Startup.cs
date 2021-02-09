@@ -4,6 +4,8 @@ using DotNetCore.Logging;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.SwaggerGen;
 
 Host.CreateDefaultBuilder().UseSerilog().Run<Startup>();
 
@@ -16,11 +18,12 @@ namespace Architecture.Web
             application.UseException();
             application.UseHttps();
             application.UseRouting();
+            application.UseEndpoints();
             application.UseResponseCompression();
             application.UseAuthentication();
             application.UseAuthorization();
-            application.UseEndpoints();
             application.UseSpa();
+            application.AddSwagger();
         }
 
         public void ConfigureServices(IServiceCollection services)
@@ -31,6 +34,8 @@ namespace Architecture.Web
             services.AddSpa();
             services.AddContext();
             services.AddServices();
+            services.AddSwagger();
         }
+        
     }
 }

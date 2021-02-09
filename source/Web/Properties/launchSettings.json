@@ -1,12 +1,22 @@
 {
-    "profiles": {
-        "Run": {
-            "commandName": "Project",
-            "environmentVariables": {
-                "ASPNETCORE_ENVIRONMENT": "Development"
-            },
-            "launchBrowser": true,
-            "applicationUrl": "https://localhost:8090"
-        }
+  "profiles": {
+    "Run": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "IsAPIOnly": "false",
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:8090"
+    },
+    "Run(API)": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "IsAPIOnly": "true",
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:8090"
     }
+  }
 }

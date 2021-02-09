@@ -7,6 +7,7 @@
         <PackageReference Include="DotNetCore.AspNetCore" Version="13.12.0" />
         <PackageReference Include="DotNetCore.IoC" Version="13.12.0" />
         <PackageReference Include="DotNetCore.Logging" Version="13.12.0" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.0.1" />
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\Application\Architecture.Application.csproj" />

@@ -7,12 +7,25 @@ using DotNetCore.Security;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.SwaggerGen;
 using System;
 
 namespace Architecture.Web
 {
     public static class Extensions
     {
+        public static bool IsAPIOnly {
+            get
+            {
+                if (Environment.GetEnvironmentVariable("IsAPIOnly") != null)
+                {
+                    return bool.Parse(Environment.GetEnvironmentVariable("IsAPIOnly"));
+                }
+                return false;
+            }
+        }
+
         public static void AddContext(this IServiceCollection services)
         {
             var connectionString = services.GetConnectionString(nameof(Context));
@@ -36,12 +49,45 @@ namespace Architecture.Web
 
         public static void AddSpa(this IServiceCollection services)
         {
+            if (IsAPIOnly) return;
             services.AddSpaStaticFiles("Frontend/dist");
+        }
+
+        public static void AddSwagger(this IServiceCollection services)
+        {
+            if (IsAPIOnly)
+            {
+                services.AddSwaggerGen(ConfigureOpenApi);
+            }
         }
 
         public static void UseSpa(this IApplicationBuilder application)
         {
+            if (IsAPIOnly) return;
             application.UseSpaAngular("Frontend", "start", "http://localhost:4200");
+        }
+
+        public static void AddSwagger(this IApplicationBuilder application)
+        {
+            if (IsAPIOnly)
+            {
+                application.UseSwagger();
+                application.UseSwaggerUI(c =>
+                {
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "API V1");
+                    c.RoutePrefix = string.Empty;
+                });
+            }
+        }
+
+        private static void ConfigureOpenApi(SwaggerGenOptions c)
+        {
+            c.SwaggerDoc("v1", new OpenApiInfo
+            {
+                Version = "v1",
+                Title = "Stock Monitor Service",
+                Description = "Stock Monitor Service API"
+            });
         }
     }
 }
