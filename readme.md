@@ -3,11 +3,9 @@
 ![](https://dev.azure.com/rafaelfgx/Architecture/_apis/build/status/Build)
 ![](https://img.shields.io/github/repo-size/rafaelfgx/Architecture?label=Size)
 
-This project is an example of architecture using new technologies and best practices.
+This project is a pratice of using .Net 5 with Angular 11 to create StockMonitor WebApp.
 
-The goal is to share knowledge and use it as reference for new projects.
-
-Thanks for enjoying!
+Trello: https://trello.com/b/Nx9fXZGY/stockmonitorwebapp
 
 ## Technologies
 
