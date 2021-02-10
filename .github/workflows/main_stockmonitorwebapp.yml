@@ -10,7 +10,7 @@ on:
 
 jobs:
   build-and-deploy:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
     - uses: actions/checkout@master
@@ -21,15 +21,15 @@ jobs:
         dotnet-version: '5.0.x'
 
     - name: Build with dotnet
-      run: dotnet build ./source/Web --configuration Release
+      run: dotnet build --configuration Release
 
     - name: dotnet publish
-      run: dotnet publish ./source/Web -c Release -o ${{env.DOTNET_ROOT}}/myapp
+      run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
     - name: Deploy to Azure Web App
       uses: azure/webapps-deploy@v2
       with:
         app-name: 'stockmonitorwebapp'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_f28328c59fab487182fbb39816a819fe }}
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_6c11501ecd6945c3ba7d5b245acf3249 }}
         package: ${{env.DOTNET_ROOT}}/myapp 
