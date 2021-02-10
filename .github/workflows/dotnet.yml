@@ -20,4 +20,6 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore source/
     - name: Build
-      run: dotnet build source/Architecture.sln --no-restore
+      run: dotnet build source/ --no-restore -c Release
+    - name: Publish
+      run: dotnet publish source/ --no-build -c Release -o ./publish
