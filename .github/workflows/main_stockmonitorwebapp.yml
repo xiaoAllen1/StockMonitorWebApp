@@ -24,7 +24,7 @@ jobs:
       run: dotnet build ./source/Web --configuration Release
 
     - name: dotnet publish
-      run: dotnet publish ./source/Web -c Release -o ${{env.DOTNET_ROOT}}/myapp --self-contained
+      run: dotnet publish ./source/Web -c Release -o ${{env.DOTNET_ROOT}}/myapp -r win10-x64 --self-contained
 
     - name: Deploy to Azure Web App
       uses: azure/webapps-deploy@v2
