@@ -21,10 +21,10 @@ jobs:
         dotnet-version: '5.0.x'
 
     - name: Build with dotnet
-      run: dotnet build ./sources/Web --configuration Release
+      run: dotnet build ./source/Web --configuration Release
 
     - name: dotnet publish
-      run: dotnet publish ./sources/Web -c Release -o ${{env.DOTNET_ROOT}}/myapp
+      run: dotnet publish ./source/Web -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
     - name: Deploy to Azure Web App
       uses: azure/webapps-deploy@v2
