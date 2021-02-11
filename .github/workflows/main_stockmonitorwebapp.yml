@@ -36,7 +36,7 @@ jobs:
       working-directory: ./source/Web/Frontend
 
     - name: Build Frontend
-      run: ng build --configuration=production --output-path ${{env.DOTNET_ROOT}}/myapp/Frontend
+      run: npm run production
       working-directory: ./source/Web/Frontend
     
     - name: Deploy to Azure Web App
