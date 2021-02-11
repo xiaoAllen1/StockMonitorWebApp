@@ -41,7 +41,7 @@ jobs:
     
     - name: Copy Files
       run: |
-       move "./dist" ${{env.DOTNET_ROOT}}/myapp
+       move "./dist" ${{env.DOTNET_ROOT}}/myapp/Frontend
       working-directory: ./source/Web/Frontend
      
     - name: Deploy to Azure Web App
