@@ -25,7 +25,20 @@ jobs:
 
     - name: dotnet publish
       run: dotnet publish ./source/Web --configuration Release --output ${{env.DOTNET_ROOT}}/myapp
+    
+    - name: Set up Node
+      uses: actions/setup-node@v2
+      with:
+        node-version: 14.x
 
+    - name: install package
+      run: npm install
+      working-directory: ./source/Web/Frontend
+
+    - name: Build Frontend
+      run: ng build --configuration=production --output-path ${{env.DOTNET_ROOT}}/myapp/Frontend
+      working-directory: ./source/Web/Frontend
+    
     - name: Deploy to Azure Web App
       uses: azure/webapps-deploy@v2
       with:
