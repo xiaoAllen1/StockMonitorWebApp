@@ -39,6 +39,10 @@ jobs:
       run: npm run production
       working-directory: ./source/Web/Frontend
     
+    - name: Copy Files
+      run: |
+       move ".source/Web/Frontend/dist" ${{env.DOTNET_ROOT}}/myapp
+     
     - name: Deploy to Azure Web App
       uses: azure/webapps-deploy@v2
       with:
