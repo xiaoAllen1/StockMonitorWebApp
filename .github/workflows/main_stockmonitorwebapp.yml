@@ -47,7 +47,7 @@ jobs:
     - name: Deploy to Azure Web App
       uses: azure/webapps-deploy@v2
       with:
-        app-name: 'stockmonitorwebapp'
+        app-name: 'stockmonitorapp'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_6c11501ecd6945c3ba7d5b245acf3249 }}
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_820c47483a124493b0c7635b9a43b507 }}
         package: ${{env.DOTNET_ROOT}}/myapp 
