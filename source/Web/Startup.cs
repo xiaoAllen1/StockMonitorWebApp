@@ -2,10 +2,9 @@ using Architecture.Web;
 using DotNetCore.AspNetCore;
 using DotNetCore.Logging;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
-using Swashbuckle.AspNetCore.SwaggerGen;
 
 Host.CreateDefaultBuilder().UseSerilog().Run<Startup>();
 

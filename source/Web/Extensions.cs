@@ -5,8 +5,10 @@ using DotNetCore.EntityFrameworkCore;
 using DotNetCore.IoC;
 using DotNetCore.Security;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System;
@@ -28,7 +30,7 @@ namespace Architecture.Web
 
         public static void AddContext(this IServiceCollection services)
         {
-            var connectionString = services.GetConnectionString(nameof(Context));
+            var connectionString = "Server=tcp:stockersonitor-server.database.windows.net,1433;Initial Catalog=StockerMonitor-database;Persist Security Info=False;User ID=stockersonitor-server-admin;Password=AntraNumber1;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
             services.AddContext<Context>(options => options.UseSqlServer(connectionString));
             services.AddUnitOfWork<Context>();
         }
