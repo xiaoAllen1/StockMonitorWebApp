@@ -17,7 +17,8 @@ namespace Architecture.Web
 {
     public static class Extensions
     {
-        public static bool IsAPIOnly {
+        public static bool IsAPIOnly
+        {
             get
             {
                 if (Environment.GetEnvironmentVariable("IsAPIOnly") != null)
@@ -30,7 +31,7 @@ namespace Architecture.Web
 
         public static void AddContext(this IServiceCollection services)
         {
-            var connectionString = "Server=tcp:stockersonitor-server.database.windows.net,1433;Initial Catalog=StockerMonitor-database;Persist Security Info=False;User ID=stockersonitor-server-admin;Password=AntraNumber1;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+            var connectionString = "Data Source=tcp:stockmonitorapp-server.database.windows.net,1433;Initial Catalog=stockmonitorapp-database;User Id=stockmonitorapp-server-admin@stockmonitorapp-server.database.windows.net;Password=Q057S1MV70IX415R$;";
             services.AddContext<Context>(options => options.UseSqlServer(connectionString));
             services.AddUnitOfWork<Context>();
         }
